@@ -1,0 +1,54 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.hx.test</groupId>
+    <artifactId>testmojo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <!--just a test project for maven plugin -->
+    <name>testmojo</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/net.schmizz/sshj -->
+
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.hxf.rexec</groupId>
+                <artifactId>maven-plugin_rexec</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <!--红色警告没关系，可以正常运行-->
+                <configuration>
+                    <user>fangqing</user>
+                    <passwd>fangqing</passwd>
+                    <path>/home/fangqing/git-home</path>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <id>first-execution</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>touch</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>
